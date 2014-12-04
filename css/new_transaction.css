@@ -1,0 +1,235 @@
+#new_transaction {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    font-family: 'Open Sans', sans-serif;
+    /*display: none;*/
+}
+
+#new_transaction > div:first-child {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    opacity: 0.9;
+    background-color: black;
+}
+
+#new_transaction > div:last-child {
+    position: absolute;
+    top: 100px;
+    bottom: 100px;
+    width: 600px;
+    left: 50%;
+    margin-left: -300px;
+    background-color: black;
+    border: 1px solid #666666;
+    border-radius: 10px;
+    opacity: 1;
+    display: none;
+}
+
+#new_transaction > div:last-child > a {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    height: 20px;
+    width: 20px;
+    background-image: url("../img/cross1.png");
+}
+
+#new_transaction > div:last-child > a:hover {
+    background-image: url("../img/cross2.png");
+}
+
+#exp-or-income {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+}
+
+#exp-or-income li {
+    display: inline;
+    padding: 0px 30px 0px 0px;
+}
+
+#exp-or-income a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #666;
+    font-size: 20px;
+    letter-spacing: 2px;
+    padding-bottom: 3px;
+}
+
+#exp-or-income a:hover, #exp-or-income a.selected {
+    color: #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+#expense_input {
+    position: absolute;
+    top: 100px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+#expense_input div.input {
+    background-color: black;
+    color: #ccc;
+    position: absolute;
+    /*border: 1px solid #ccc;*/
+}
+
+#expense_input div.input span {
+    position: absolute;
+}
+
+#expense_input div.input span:first-child {
+    top: 4px;
+    left: 6px;
+}
+
+#expense_input div.input input[type="text"] {
+    background-color: black;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    text-align: right;
+    position: absolute;
+    top: 7px;
+    color: #ccc;
+}
+
+#expense_input div.input input[type="text"]:focus {
+    outline-width: 0;
+}
+
+#input_amount {
+    left: 50px;
+    top: 0px;
+    width: 177px;
+    height: 30px;
+}
+
+#input_category {
+    left: 250px;
+    top: 0px;
+    width: 300px;
+    height: 30px;
+}
+
+#input_date {
+    top: 30px;
+    left: 50px;
+    right: 50px;
+    height: 30px;
+}
+
+#tran_category {
+    left: 100px;
+    width: 194px;
+}
+
+#input_amount span:last-child {
+    top: 6px;
+    left: 153px;
+}
+
+#amount_currency {
+    width: 8px;
+    left: 90px;
+}
+
+#amount_int {
+    left: 100px;
+    width: 50px;
+}
+
+#amount_decimal {
+    left: 157px;
+    width: 14px;
+}
+
+#date_month {
+    left: 90px;
+    width: 18px;
+}
+
+#date_day {
+    left: 116px;
+    width: 18px;
+}
+
+#date_year {
+    left: 141px;
+    width: 30px;
+}
+
+#btn_add_transaction {
+    background-color: black;
+    color: #ccc;
+}
+
+#btn_add_transaction {
+    background: black;
+    color: #ccc;
+    border-radius: 28px;
+    font-size: 12px;
+    text-decoration: none;
+    position: absolute;
+    left: 510px;
+    top: 38px;
+    outline: none;
+}
+
+#btn_add_transaction:hover {
+    background: #ccc;
+    color: black;
+    text-decoration: none;
+}
+
+#suggestion-box {
+    position: absolute;
+    top: 27px;
+    left: 100px;
+    width: 194px;
+    border: 1px solid #ccc;
+    z-index: 1;
+    background-color: black;
+    color: #ccc;
+    text-align: right;
+    font-size: 12px;
+}
+
+#suggestion-box > div {
+    padding: 2px 4px 2px 4px;
+}
+
+#suggestion-box {
+    display: none;
+}
+
+#suggestion-box > div.selected {
+    background-color: #ccc;
+    color: black;
+}
+
+#similar_trans {
+    border: 1px solid #ccc;
+    position: absolute;
+    left: 40px;
+    right: 40px;
+    top: 80px;
+    bottom: 30px;
+}
+
+#similar_trans > p {
+    padding: 100px 10px 0px 10px;
+    color: #ccc;
+    font-size: 12px;
+    text-align: center;
+}

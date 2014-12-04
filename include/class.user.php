@@ -16,7 +16,7 @@ class User {
     var $db_name;
 
     function User() {
-        $this->site_rand_key = 'lfei3#Sd0iDfe';
+        $this->site_rand_key = 'l$sFd4fEfe23';
     }
 
     function login() {

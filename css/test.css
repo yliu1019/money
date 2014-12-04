@@ -1,0 +1,11 @@
+#div0 {
+    width: 200px;
+    background-color: blue;
+}
+
+#div1 {
+    position: relative;
+    top: 0px;
+    width: 50px;
+    background-color: red;
+}
