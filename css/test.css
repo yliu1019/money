@@ -1,11 +1,17 @@
-#div0 {
-    width: 200px;
-    background-color: blue;
+div {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: black;
 }
 
-#div1 {
-    position: relative;
-    top: 0px;
-    width: 50px;
-    background-color: red;
+p {
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    border: 1px solid red;
+    position: absolute;
+    top: 50%;
 }

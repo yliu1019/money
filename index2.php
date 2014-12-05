@@ -80,7 +80,7 @@ if(!$u->isLoggedIn()) {
                     </div>
                     <button id="btn_add_transaction" type="button" onclick="check_input_data_and_save()">Save</button>
                     <div id="similar_trans">
-                        <p>* Enter the Amount above and we will find transactions with the same amount here to prevent double entries.</p>
+                        <div>* Enter the Amount above and we will find transactions with the same amount here to prevent double entries.</div>
                     </div>
                 </div>
             </div>

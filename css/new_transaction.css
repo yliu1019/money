@@ -5,7 +5,7 @@
     left: 0px;
     right: 0px;
     font-family: 'Open Sans', sans-serif;
-    /*display: none;*/
+    display: none;
 }
 
 #new_transaction > div:first-child {
@@ -227,9 +227,14 @@
     bottom: 30px;
 }
 
-#similar_trans > p {
-    padding: 100px 10px 0px 10px;
+#similar_trans > div {
     color: #ccc;
     font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    right: 10px;
+    height: 50px;
+    margin-top: -25px;
     text-align: center;
 }
