@@ -2,7 +2,7 @@
 require_once("./include/class.user.php");
 
 const MYSQL_SERVER = '127.0.0.1';
-const MYSQL_USER = 'task';
+const MYSQL_USER = 'money';
 const MYSQL_PSWD = 'Gg44gG77';
 const MYSQL_DB = 'scopetrack';
 

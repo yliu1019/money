@@ -5,14 +5,14 @@ $(document).ready(function() {
 
     $(document).keydown(function(e) {
         keys = {esc: 27};
-        if(e.keyCode == keys.esc) {
+        if (e.keyCode == keys.esc) {
             close_new_transaction();
         }
     });
 
     $('#amount_int').keydown(function(e) {
         keys = {dot: 190, enter: 13, bs: 8, left: 37, right: 39, tab: 9};
-        if(e.keyCode == keys.dot || e.keyCode == keys.enter || e.keyCode == keys.tab) {
+        if (e.keyCode == keys.dot || e.keyCode == keys.enter || e.keyCode == keys.tab) {
             $('#amount_decimal').focus();
             e.preventDefault();
         } else if (e.keyCode == keys.bs || e.keyCode == keys.left || e.keyCode == keys.right) {
@@ -24,7 +24,7 @@ $(document).ready(function() {
 
     $('#amount_decimal').keydown(function(e) {
         keys = {enter: 13, bs: 8, left: 37, right: 39, tab: 9};
-        if(e.keyCode == keys.enter || e.keyCode == keys.tab) {
+        if (e.keyCode == keys.enter || e.keyCode == keys.tab) {
             $('#tran_category').focus();
             e.preventDefault();
         } else if (e.keyCode == keys.bs || e.keyCode == keys.left || e.keyCode == keys.right) {
@@ -37,20 +37,20 @@ $(document).ready(function() {
     $('#input_category').keydown(function(e) {
         keys = {enter: 13, tab: 9, up: 38, down: 40};
         var sug = $('#input_category > #suggestion-box');
-        if(e.keyCode == keys.enter || e.keyCode == keys.tab) {
-            if($('#input_category').data('subcategory') != undefined) {
+        if (e.keyCode == keys.enter || e.keyCode == keys.tab) {
+            if ($('#input_category').data('subcategory') != undefined) {
                 $('#tran_category').val($('#input_category').data('subcategory').value);
             }
             $('#date_month').focus();
             e.preventDefault();
         } else if (sug.is(":visible")) {
-            if(e.keyCode == keys.up || e.keyCode == keys.down) {
+            if (e.keyCode == keys.up || e.keyCode == keys.down) {
                 e.preventDefault();
             }
             var cur = sug.children('div:visible.selected');
-            if(e.keyCode == keys.up) {
-                if(cur.length > 0) {
-                    if(cur.prevAll('div:visible').length > 0) {
+            if (e.keyCode == keys.up) {
+                if (cur.length > 0) {
+                    if (cur.prevAll('div:visible').length > 0) {
                         sug.children().removeClass('selected');
                         var sel = cur.prevAll('div:visible').first();
                         sel.addClass('selected');
@@ -66,8 +66,8 @@ $(document).ready(function() {
                         value: sel.data('subcategory').value})
                 }
             } else if (e.keyCode == keys.down) {
-                if(cur.length > 0) {
-                    if(cur.nextAll('div:visible').length > 0) {
+                if (cur.length > 0) {
+                    if (cur.nextAll('div:visible').length > 0) {
                         sug.children().removeClass('selected');
                         var sel = cur.nextAll('div:visible').first();
                         sel.addClass('selected');
@@ -89,14 +89,14 @@ $(document).ready(function() {
     $('#input_category').keyup(function(e) {
         var sug = $('#input_category > #suggestion-box');
 
-        if($('#tran_category').val().length == 0) {
+        if ($('#tran_category').val().length == 0) {
             sug.children().removeClass('selected');
             sug.hide();
             return;
         }
 
         sug.children('div').each(function () {
-            if($(this).html().toLowerCase().indexOf($('#tran_category').val().toLowerCase()) > -1) {
+            if ($(this).html().toLowerCase().indexOf($('#tran_category').val().toLowerCase()) > -1) {
                 sug.show();
                 $(this).show();
             } else {
@@ -104,9 +104,9 @@ $(document).ready(function() {
                 $(this).removeClass('selected');
             }
         });
-        if(sug.children(':visible').length == 0) {
+        if (sug.children(':visible').length == 0) {
             sug.hide();
-        } else if(sug.children(':visible').length == 1) {
+        } else if (sug.children(':visible').length == 1) {
             var sel = sug.children(':visible');
             sel.addClass('selected');
             $('#input_category').data('subcategory', {
@@ -117,7 +117,7 @@ $(document).ready(function() {
 
     $('#input_category').focusout(function() {
         var sug = $('#suggestion-box');
-        if(sug.children('div:visible.selected').length == 1) {
+        if (sug.children('div:visible.selected').length == 1) {
             var sel = sug.children('div:visible.selected');
             $('#input_category').data('subcategory', {
                 id: sel.data('subcategory').id,
@@ -129,7 +129,45 @@ $(document).ready(function() {
         }
         sug.hide();
         $('#date_month').focus();
-    })
+    });
+
+    $('#date_month').keydown(function(e) {
+        keys = { enter:13, de:8, left:37, right:39, tab:9, up:38, down:40 };
+        if (e.keyCode == keys.enter || e.keyCode == keys.tab) {
+            $('#date_day').focus();
+            e.preventDefault();
+        } else if (e.keyCode == keys.de || e.keyCode == keys.left || e.keyCode == keys.right) {
+
+        } else if (e.keyCode == keys.up) {
+            var month_count_up = parseInt($('#date_month').val());
+            if (isNaN(month_count_up)) {
+                month_count_up = 1;
+            } else {
+                month_count_up = month_count_up >= 12 ? 12 : (month_count_up + 1);
+            }
+            $('#date_month').val(month_count_up.toString());
+        } else if (e.keyCode == keys.down) {
+            var month_count_down = parseInt($('#date_month').val());
+            if (isNaN(month_count_down)) {
+                month_count_down = 1;
+            } else { 
+                month_count_down = month_count_down <= 1 ? 1 : (month_count_down > 13 ? 12 : month_count_down - 1);
+            }
+            $('#date_month').val(month_count_down.toString());
+        } else if (e.keyCode < 48 || e.keyCode > 57 || $('#date_month').val().length >= 2) {
+            e.preventDefault();
+        }
+    });
+
+    $('#date_month').focusout(function() {
+        var month = parseInt($('#date_month').val());
+        if (isNaN(month)) {
+            $('#date_month').val('');
+            return;
+        }
+        month = month > 12 ? 12 : (month < 1 ? 1 : month);
+        $('#date_month').val((month < 10 ? '0' : '') + month.toString());
+    });
 })
 
 function item_click(item) {
@@ -149,7 +187,7 @@ function init_new_transaction() {
         $.each(categories, function(index, value) {
             var fields = value.split('\\t');
             var display_category = fields[2] + " > " + fields[1];
-            if(fields[1] == fields[2]) {
+            if (fields[1] == fields[2]) {
                 display_category = fields[2];
             }
             $('#suggestion-box').append(
@@ -177,15 +215,17 @@ function close_new_transaction() {
 }
 
 function check_input_data_and_save() {
+    console.log($.datepicker.parseDate('mmddyy', 'lsadfjs'));
+
     var transaction_amt = check_transaction_amount();
     var transaction_category = check_transaction_category();
 
-    if(transaction_amt == undefined) {
+    if (transaction_amt == undefined) {
         $('#amount_int').focus();
         return;
     }
 
-    if(transaction_category == undefined) {
+    if (transaction_category == undefined) {
         $('#tran_category').focus();
         return;
     }
@@ -199,7 +239,7 @@ function check_transaction_amount() {
     var amount_decimal = parseFloat($('#amount_decimal').val());
     var transaction_amt = ((isNaN(amount_int) ? 0.0 : amount_int) +
         (isNaN(amount_decimal) ? 0.0 : amount_decimal) / 100.0);
-    if(transaction_amt == 0.0) {
+    if (transaction_amt == 0.0) {
         $('#input_amount > span:first-child').css('color', 'red');
         return undefined;
     } else {
@@ -209,7 +249,7 @@ function check_transaction_amount() {
 }
 
 function check_transaction_category() {
-    if($('#input_category').data('subcategory') == undefined) {
+    if ($('#input_category').data('subcategory') == undefined) {
         $('#input_category > span:first-child').css('color', 'red');
         return undefined;
     } else {

@@ -1,9 +1,5 @@
 $(document).ready(function() {
-    var resizable = new Resizable('my-element', {
-        direction: 'bottom'
-    });
-
-    resizable.setSize(200, 200);
-
-    resizable.destroy(); // the destructo
+    var a = new DateValidator($('#date_month').val(), '23', '2014');
+    a.previousMonth();
+    a.nextMonth();
 })
