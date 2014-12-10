@@ -138,35 +138,72 @@ $(document).ready(function() {
             e.preventDefault();
         } else if (e.keyCode == keys.de || e.keyCode == keys.left || e.keyCode == keys.right) {
 
-        } else if (e.keyCode == keys.up) {
-            var month_count_up = parseInt($('#date_month').val());
-            if (isNaN(month_count_up)) {
-                month_count_up = 1;
-            } else {
-                month_count_up = month_count_up >= 12 ? 12 : (month_count_up + 1);
+        } else if (e.keyCode == keys.up || e.keyCode == keys.down) {
+            var cur = new DateValidator($('#date_year').val(), $('#date_month').val(), $('#date_day').val())
+            if(cur.isCurrentMonthValid) {
+                if(e.keyCode == keys.up)
+                    $('#date_month').val(cur.nextMonth().currentMonth());
+                else
+                    $('#date_month').val(cur.previousMonth().currentMonth());
             }
-            $('#date_month').val(month_count_up.toString());
-        } else if (e.keyCode == keys.down) {
-            var month_count_down = parseInt($('#date_month').val());
-            if (isNaN(month_count_down)) {
-                month_count_down = 1;
-            } else { 
-                month_count_down = month_count_down <= 1 ? 1 : (month_count_down > 13 ? 12 : month_count_down - 1);
-            }
-            $('#date_month').val(month_count_down.toString());
+            e.preventDefault();
         } else if (e.keyCode < 48 || e.keyCode > 57 || $('#date_month').val().length >= 2) {
             e.preventDefault();
         }
     });
 
     $('#date_month').focusout(function() {
-        var month = parseInt($('#date_month').val());
-        if (isNaN(month)) {
-            $('#date_month').val('');
-            return;
+        $('#date_month').val(new DateValidator($('#date_year').val(), $('#date_month').val(), $('#date_day').val()).coalesceMonth());
+    });
+
+    $('#date_day').keydown(function(e) {
+        keys = { enter:13, de:8, left:37, right:39, tab:9, up:38, down:40 };
+        if (e.keyCode == keys.enter || e.keyCode == keys.tab) {
+            $('#date_year').focus();
+            e.preventDefault();
+        } else if (e.keyCode == keys.de || e.keyCode == keys.left || e.keyCode == keys.right) {
+
+        } else if (e.keyCode == keys.up || e.keyCode == keys.down) {
+            var cur = new DateValidator($('#date_year').val(), $('#date_month').val(), $('#date_day').val())
+            if(cur.isCurrentDayValid) {
+                if(e.keyCode == keys.up)
+                    $('#date_day').val(cur.nextDay().currentDay());
+                else
+                    $('#date_day').val(cur.previousDay().currentDay());
+            }
+            e.preventDefault();
+        } else if (e.keyCode < 48 || e.keyCode > 57 || $('#date_day').val().length >= 2) {
+            e.preventDefault();
         }
-        month = month > 12 ? 12 : (month < 1 ? 1 : month);
-        $('#date_month').val((month < 10 ? '0' : '') + month.toString());
+    });
+
+    $('#date_day').focusout(function() {
+        $('#date_day').val(new DateValidator($('#date_year').val(), $('#date_month').val(), $('#date_day').val()).coalesceDay());
+    });
+
+    $('#date_year').keydown(function(e) {
+        keys = { enter:13, de:8, left:37, right:39, tab:9, up:38, down:40 };
+        if (e.keyCode == keys.tab) {
+            $('#amount_int').focus();
+            e.preventDefault();
+        } else if (e.keyCode == keys.de || e.keyCode == keys.left || e.keyCode == keys.right) {
+
+        } else if (e.keyCode == keys.up || e.keyCode == keys.down) {
+            var cur = new DateValidator($('#date_year').val(), $('#date_month').val(), $('#date_day').val())
+            if(cur.isCurrentYearValid) {
+                if(e.keyCode == keys.up)
+                    $('#date_year').val(cur.nextYear().currentYear());
+                else
+                    $('#date_year').val(cur.previousYear().currentYear());
+            }
+            e.preventDefault();
+        } else if (e.keyCode < 48 || e.keyCode > 57 || $('#date_year').val().length >= 4) {
+            e.preventDefault();
+        }
+    });
+
+    $('#date_year').focusout(function() {
+        $('#date_year').val(new DateValidator($('#date_year').val(), $('#date_month').val(), $('#date_day').val()).coalesceYear());
     });
 })
 

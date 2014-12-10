@@ -14,7 +14,7 @@ if(!$u->isLoggedIn()) {
         <link type="text/css" rel="stylesheet" href="css/new_transaction.css"/>
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"
             charset="utf-8"></script>
-        <script src="http://gobanana.today/DateValidator/DateValidator.js"
+        <script src="js/DateValidator.js"
             charset="utf-8"></script>
         <script src="js/main.js"
             charset="utf-8"></script>

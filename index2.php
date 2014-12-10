@@ -11,10 +11,8 @@ if(!$u->isLoggedIn()) {
     <head>
         <meta charset="utf-8">
         <title>Money GoBanana Today!</title>
-        <script src="http://code.jquery.com/jquery-1.11.0.min.js"
-            charset="utf-8"></script>
-        <script src="js/jquery-ui/jquery-ui.js"
-            charset="utf-8"></script>
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js" charset="utf-8"></script>
+        <script src="http://gobanana.today/DateValidator/DateValidator.js" charset="utf-8"></script>
         <script src="js/bind.js" charset="utf-8"></script>
         <link href='http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:300'
             rel='stylesheet' type='text/css'>

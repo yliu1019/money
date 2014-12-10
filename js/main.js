@@ -1,5 +1,6 @@
 $(document).ready(function() {
-    var a = new DateValidator($('#date_month').val(), '23', '2014');
-    a.previousMonth();
-    a.nextMonth();
+    var a = new DateValidator('', '12', '');
+    console.log(a.coalesceYear());
+    console.log(a.coalesceMonth());
+    console.log(a.coalesceDay());
 })
