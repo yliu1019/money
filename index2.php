@@ -13,6 +13,14 @@ if(!$u->isLoggedIn()) {
         <title>Money GoBanana Today!</title>
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"
             charset="utf-8"></script>
+        <script src="http://gobanana.today/DateValidator/DateValidator.js"
+            charset="utf-8"></script>
+        <script src="js/new_transaction.js" charset="utf-8"></script>
+        <script src="js/verification.js" charset="utf-8"></script>
+        <script src="js/bind_click.js" charset="utf-8"></script>
+        <script src="js/bind_focusout.js" charset="utf-8"></script>
+        <script src="js/bind_keydown.js" charset="utf-8"></script>
+        <script src="js/bind_keyup.js" charset="utf-8"></script>
         <script src="js/bind.js" charset="utf-8"></script>
         <link href='http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:300'
             rel='stylesheet' type='text/css'>
@@ -24,6 +32,7 @@ if(!$u->isLoggedIn()) {
     <body>
         <div id="nav-top">
             <a onclick="open_new_transaction()" href="#">New Transaction</a>
+            <input id="quick_search" type="text" placeholder="Quick Search"/>
         </div>
         <div id="nav-left">
             <div class="nav-sec">
@@ -78,9 +87,10 @@ if(!$u->isLoggedIn()) {
                         <input id="date_day" type="text" placeholder="DD" />
                         <input id="date_year" type="text" placeholder="YYYY" />
                     </div>
-                    <button id="btn_add_transaction" type="button" onclick="check_input_data_and_save()">Save</button>
+                    <button id="btn_add_transaction" type="button">Save</button>
                     <div id="similar_trans">
-                        <div>* Enter the Amount above and we will find transactions with the same amount here to prevent double entries.</div>
+                        <div class="no_data">* Enter the Amount above and we will find transactions with the same amount here to prevent double entries.</div>
+                        <div class="have_data"></div>
                     </div>
                 </div>
             </div>

@@ -6,3 +6,12 @@
     height: 60px;
     background-color: #0095ce;
 }
+
+#quick_search {
+    position: absolute;
+    right: 30px;
+    top: 18px;
+    width: 200px;
+    border-radius: 28px;
+    padding: 3px 10px 3px 10px;
+}
