@@ -24,7 +24,7 @@ if(isset($_POST['submitted'])) {
             </p>
             <p>
                 <label for="password">Password:</label>
-                <input type="password" name="password" value="123">
+                <input type="password" name="password">
             </p>
             <p>
                 <button type="submit">Login</button>
