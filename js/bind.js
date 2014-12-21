@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    $("input:text").focus(function() { $(this).select(); });
+
     bind_click();
     bind_keydown();
     bind_keyup();
