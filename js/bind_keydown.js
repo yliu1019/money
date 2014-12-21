@@ -69,7 +69,7 @@ function bind_keydown() {
             else {
                 $('#date_month').val(cur.previousMonth().coalesceMonth());
             }
-        } else if (e.keyCode == keys.bs || e.keyCode == keys.left || e.keyCode == keys.right || (e.keyCode >= 48 && e.keyCode <= 57 && $('#date_month').val().length < 2)) {
+        } else if (e.keyCode == keys.bs || e.keyCode == keys.left || e.keyCode == keys.right || (e.keyCode >= 48 && e.keyCode <= 57 && $(this).val().length - $(this).selection('get').length < 2)) {
             return;
         }
         e.preventDefault();
@@ -87,7 +87,7 @@ function bind_keydown() {
             else {
                 $('#date_day').val(cur.previousDay().coalesceDay());
             }
-        } else if (e.keyCode == keys.bs || e.keyCode == keys.left || e.keyCode == keys.right || (e.keyCode >= 48 && e.keyCode <= 57 && $('#date_day').val().length < 2)) {
+        } else if (e.keyCode == keys.bs || e.keyCode == keys.left || e.keyCode == keys.right || (e.keyCode >= 48 && e.keyCode <= 57 && $(this).val().length - $(this).selection('get').length < 2)) {
             return;
         }
         e.preventDefault();
@@ -107,7 +107,7 @@ function bind_keydown() {
             else {
                 $('#date_year').val(cur.previousYear().coalesceYear());
             }
-        } else if (e.keyCode == keys.bs || e.keyCode == keys.left || e.keyCode == keys.right || (e.keyCode >= 48 && e.keyCode <= 57 && $('#date_year').val().length < 4)) {
+        } else if (e.keyCode == keys.bs || e.keyCode == keys.left || e.keyCode == keys.right || (e.keyCode >= 48 && e.keyCode <= 57 && $(this).val().length - $(this).selection('get').length < 4)) {
             return;
         }
         e.preventDefault();
