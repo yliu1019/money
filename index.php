@@ -15,6 +15,7 @@ if(!$u->isLoggedIn()) {
             charset="utf-8"></script>
         <script src="http://gobanana.today/DateValidator/DateValidator.js"
             charset="utf-8"></script>
+        <script src="js/plugins/jquery.selection.js" charset="utf-8"></script>    
         <script src="js/new_transaction.js" charset="utf-8"></script>
         <script src="js/verification.js" charset="utf-8"></script>
         <script src="js/bind_click.js" charset="utf-8"></script>

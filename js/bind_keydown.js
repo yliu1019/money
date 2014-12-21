@@ -26,7 +26,7 @@ function bind_keydown() {
             $('#amount_int').focus();
         } else if(e.keyCode == keys.enter || e.keyCode == keys.tab) {
             $('#tran_category').focus();
-        } else if (e.keyCode == keys.bs || e.keyCode == keys.left || e.keyCode == keys.right || (e.keyCode >= 48 && e.keyCode <= 57 && $('#amount_decimal').val().length < 2)) {
+        } else if (e.keyCode == keys.bs || e.keyCode == keys.left || e.keyCode == keys.right || (e.keyCode >= 48 && e.keyCode <= 57 && $(this).val().length - $(this).selection('get').length < 2)) {
             return;
         }
         e.preventDefault();
