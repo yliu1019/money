@@ -16,15 +16,20 @@ function conform_trans_amt_int(txt_trans_amt_int) {
 
 function conform_trans_amt_decimal(txt_trans_amt_decimal) {
     trans_amt_decimal = parseInt(txt_trans_amt_decimal.val());
-    if(isNaN(trans_amt_decimal)) {
+    if(isNaN(trans_amt_decimal) || trans_amt_decimal <= 0) {
         trans_amt_decimal = 0;
-    } else if (trans_amt_decimal < 10) {
-        trans_amt_decimal = trans_amt_decimal * 10;
     } else if (trans_amt_decimal >= 100) {
         trans_amt_decimal = 99;
     }
+
+    if(trans_amt_decimal == 0) {
+        txt_trans_amt_decimal.val('');
+    } else if (trans_amt_decimal < 10) {
+        txt_trans_amt_decimal.val('0' + trans_amt_decimal);
+    } else {
+        txt_trans_amt_decimal.val(trans_amt_decimal);
+    }
     
-    txt_trans_amt_decimal.val(trans_amt_decimal == 0 ? '' : trans_amt_decimal);
     txt_trans_amt_decimal.data('data', {'trans_amt_decimal': trans_amt_decimal});
 
     return trans_amt_decimal;
