@@ -6,7 +6,6 @@ function bind_click() {
     });
 
     $('#btn_add_transaction').click(function() {
-        $(this).prop('disabled', true);
         save_transaction(
             $('#input_amount'),
             $('#input_category'),

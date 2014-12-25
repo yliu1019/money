@@ -96,6 +96,7 @@ function save_transaction(amount, category, date, save_button) {
         return;
     }
 
+    save_button.prop('disabled', true);
     $.post("db.php?qtype=new_transaction", {
         amount: amount.data('data').trans_amt,
         category: category.data('data').trans_cat_id,
