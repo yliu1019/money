@@ -7,11 +7,11 @@ function render_similar_transactions(output, data) {
             <table>\
                 <thead>\
                     <tr>\
-                        <th>Date</th>\
-                        <th>Category</th>\
-                        <th>Subcategory</th>\
-                        <th>Amount</th>\
-                        <th>Confirmed</th>\
+                        <th class="date">Date</th>\
+                        <th class="category">Category</th>\
+                        <th class="subcategory">Subcategory</th>\
+                        <th class="amount">Amount</th>\
+                        <th class="confirmed">Confirmed</th>\
                     </tr>\
                 </thead>\
                 <tbody></tbody>\
@@ -21,24 +21,27 @@ function render_similar_transactions(output, data) {
         $.each(rows, function(i, row) {
             if(row != '') {
                 fields = row.split('\\t');
-                if(fields[5] == '0') {
-                    confirmed = $('<td><button type="button">confirm</button></td>');
-                } else {
-                    confirmed = $('<td>confirmed</td>');
-                }
-                htmlRow = $('<tr><td>'+fields[1].substring(0, 10)+'</td><td>'+fields[2]+'</td><td>'+fields[3]+'</td><td>'+fields[4]+'</td></tr>');
+                htmlRow = $('<tr><td class="date">'+fields[1].substring(0, 10)+'</td><td class="category">'+fields[2]+'</td><td class="subcategory">'+fields[3]+'</td><td class="amount">'+fields[4]+'</td></tr>');
                 htmlRow.data('data', {'transaction_id': fields[0]});
-                htmlRow.append(confirmed);
+                htmlRow.append($(sprintf('\
+                    <td class="confirmed">\
+                        <input type="checkbox" %s />\
+                    </td>\
+                ', fields[5] == '0' ? '' : 'checked')));
                 result.children('tbody').append(htmlRow);
             }
         })
 
-        result.find('button').click(function() {
-            $.post("db.php?qtype=confirm_transaction",
-                {transaction_id: $(this).parent().parent().data('data').transaction_id}
-            ).done(function(result) {
+        result.find('input[type="checkbox"]').click(function() {
+            $.post("db.php?qtype=confirm_transaction", {
+                transaction_id: $(this).parent().parent().data('data').transaction_id,
+                unconfirm: !$(this).is(':checked')
+            }).done(function(result) {
+                console.log(result);
                 if(result == 'ok') {
-                    alert('confirmed');
+                    $(this).prop('checked', $(this).is(':checked'));
+                } else {
+                    $(this).prop('checked', !$(this).is(':checked'));
                 }
             });
         });

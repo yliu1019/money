@@ -22,23 +22,27 @@ switch ($_GET['qtype']) {
         print get_transactions_categories();
         break;
     case "confirm_transaction":
-        print confirm_transaction($_POST['transaction_id']);
+        if(isset($_POST['transaction_id']) && isset($_POST['unconfirm']))
+            print confirm_transaction($_POST['transaction_id'],
+                $_POST['unconfirm']);
+        else
+            print "error";
         break;
     default:
         echo "no qtype";
 }
 
-function confirm_transaction($transaction_id) {
+function confirm_transaction($transaction_id, $unconfirm) {
     $transaction_id = (int)$transaction_id;
     if($transaction_id > 0) {
         $mysqli = new mysqli(MYSQL_SERVER, MYSQL_USER, MYSQL_PSWD, MYSQL_DB);
         if (mysqli_connect_errno())
             die('Failed to connect to MySQL: ' . mysqli_connect_error());
 
-        $stmt = $mysqli->prepare('
-            UPDATE spending SET spending_confirmed = true
+        $stmt = $mysqli->prepare(sprintf('
+            UPDATE spending SET spending_confirmed = %s
             WHERE spending_id = ?;
-        ');
+        ', $unconfirm == 'true' ? '0' : '1'));
         if ($mysqli->errno)
             die('MySQL Error: ' . mysqli_error($mysqli) .
                 " Error Code: " . $mysqli->errno);

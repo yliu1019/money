@@ -227,9 +227,47 @@
     color: #ccc;
 }
 
+#similar_trans table {
+    width: 100%;
+}
+
+#similar_trans table thead, tbody {
+    display: block;
+    font-size: 13px;
+    text-align: center;
+}
+
+#similar_trans th.date, td.date {
+    width: 100px;
+}
+
+#similar_trans th.category, td.category {
+    width: 100px;
+}
+
+#similar_trans th.subcategory, td.subcategory {
+    width: 100px;
+}
+
+#similar_trans th.amount, td.amount {
+    width: 100px;
+}
+
+#similar_trans th.confirmed, td.confirmed {
+    width: 100px;
+}
+
+#similar_trans table tbody {
+    overflow: auto;
+    position: absolute;
+    top: 26px;
+    bottom: 0px;
+}
+
 #similar_trans > div.have_data {
     display: none;
 }
+
 #similar_trans > div.no_data {
     font-size: 12px;
     position: absolute;
