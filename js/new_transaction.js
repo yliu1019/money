@@ -37,7 +37,6 @@ function render_similar_transactions(output, data) {
                 transaction_id: $(this).parent().parent().data('data').transaction_id,
                 unconfirm: !$(this).is(':checked')
             }).done(function(result) {
-                console.log(result);
                 if(result == 'ok') {
                     $(this).prop('checked', $(this).is(':checked'));
                 } else {
@@ -53,7 +52,7 @@ function render_similar_transactions(output, data) {
     }
 }
 
-function save_transaction(amount, category, date) {
+function save_transaction(amount, category, date, save_button) {
     amount_passed = true;
     category_passed = true;
     date_passed = true;
@@ -114,6 +113,7 @@ function save_transaction(amount, category, date) {
             $('#similar_trans').children(".have_data").hide();
             amount.children('input:not([readonly])').first().focus();
         };
+        save_button.prop('disabled', false);
     });
 }
 

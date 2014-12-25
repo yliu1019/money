@@ -59,7 +59,7 @@ function bind_keydown() {
 
     $('#date_month').keydown(function(e) {
         if (e.shiftKey && e.keyCode == keys.tab) {
-            $('#input_category').focus();
+            $('#tran_category').focus();
         } else if (e.keyCode == keys.enter || e.keyCode == keys.tab) {
             $('#date_day').focus();
         } else if (e.keyCode == keys.up || e.keyCode == keys.down) {
