@@ -1,5 +1,5 @@
 function bind_keydown() {
-    var keys = {shift: 16, dot: 190, enter: 13, bs: 8, left: 37, right: 39, tab: 9, esc: 27, up: 38, down: 40, s: 83};
+    var keys = {shift: 16, dot: 190, enter: 13, bs: 8, left: 37, right: 39, tab: 9, esc: 27, up: 38, down: 40, s: 83, n: 78};
 
     $(document).keydown(function(e) {
         if(e.keyCode == keys.esc) {
@@ -7,7 +7,9 @@ function bind_keydown() {
         } else if (e.keyCode == keys.s && e.ctrlKey) {
             $('#quick_search').focus();
             e.preventDefault();
-        }
+        } else if (e.keyCode == keys.n && e.ctrlKey) {
+            open_new_transaction();
+        } 
     });
 
     $('#amount_int').keydown(function(e) {
