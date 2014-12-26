@@ -1,6 +1,5 @@
 function bind_keydown() {
-    var keys = {shift: 16, dot: 190, enter: 13, bs: 8, left: 37, right: 39, tab: 9, esc: 27, up: 38, down: 40, s: 83, n: 78};
-
+    var keys = {shift: 16, dot: 190, enter: 13, bs: 8, left: 37, right: 39, tab: 9, esc: 27, up: 38, down: 40, s: 83, n: 78, e: 69, i: 73};
     $(document).keydown(function(e) {
         if(e.keyCode == keys.esc) {
             close_new_transaction();
@@ -9,7 +8,17 @@ function bind_keydown() {
             e.preventDefault();
         } else if (e.keyCode == keys.n && e.ctrlKey) {
             open_new_transaction();
-        } 
+        } else if (e.keyCode == keys.e && e.ctrlKey) {
+            if ($('#new_transaction').is(":visible")) {
+                $('#exp-or-income a').removeClass('selected');
+                $('#exp-or-income ul li:first-child a').addClass('selected');
+            }
+        } else if (e.keyCode == keys.i && e.ctrlKey) {
+            if ($('#new_transaction').is(":visible")) {
+                $('#exp-or-income a').removeClass('selected');
+                $('#exp-or-income ul li:last-child a').addClass('selected');
+            }
+        }
     });
 
     $('#amount_int').keydown(function(e) {
@@ -115,3 +124,7 @@ function bind_keydown() {
         e.preventDefault();
     });
 }
+
+
+
+
